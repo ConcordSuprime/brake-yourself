@@ -1,13 +1,32 @@
 <?php
 
-namespace App\Http\Controllers\Apis;
+namespace App\Console\Commands;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Console\Command;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
-class TelegramController extends Controller
+class SendTrainingExercise extends Command
 {
-    public function test()
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'send:training';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Command description';
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
     {
         $data = [
             'hands' => [
@@ -31,5 +50,7 @@ class TelegramController extends Controller
                 'text' => $data['legs'][random_int(0, count($data['legs']) - 1)]
             ]
         );
+
+        return Command::SUCCESS;
     }
 }
