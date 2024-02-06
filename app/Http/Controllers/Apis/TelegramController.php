@@ -31,5 +31,8 @@ class TelegramController extends Controller
                 'text' => $data['legs'][random_int(0, count($data['legs']) - 1)]
             ]
         );
+
+
+
     }
 }
