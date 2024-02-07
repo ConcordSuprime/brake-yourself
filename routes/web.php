@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Profile\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+
+Route::prefix('')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::prefix('/profile')->group(function () {
+        Route::get('/me', [ProfileController::class, 'getProfilePage'])->name('me');
+    })->name('profile.');
+})->middleware('auth');
