@@ -47,7 +47,7 @@ class SendTrainingExercise extends Command
         Telegram::bot('mybot')->sendMessage(
             [
                 'chat_id' => '442040222',
-                'text' => $data['back'][random_int(0, count($data['back']) - 1)]
+                'text' => $data['hands'][random_int(0, count($data['hands']) - 1)]
             ]
         );
 
