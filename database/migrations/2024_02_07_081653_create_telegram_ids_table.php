@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('telegram_id');
             $table->string('name');
-            $table->boolean('me')->default(false);
+            $table->boolean('is_me')->default(false);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')
