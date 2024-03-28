@@ -28,26 +28,20 @@ class SendTrainingExercise extends Command
      */
     public function handle()
     {
-        $data = [
-            'hands' => [
-                'Отжимания 3х10',
-                'Толчок гири 3х6 24кг',
-            ],
-            'back' => [
-                'Подтягивание (+резина) 3х10',
-                'Австралийские подтягивания 3х10'
-            ],
-            'legs' => [
-                'Выпады 3х10 на каждую',
-                'Приседания 4х15'
-            ],
-        ];
 
+        $exercise = [
+            'Отжимания от пола',
+            'Толчок гири',
+            'Подтягивание (+резина)',
+            'Австралийские подтягивания',
+            'Выпады',
+            'Приседания',
+        ];
 
         Telegram::bot('mybot')->sendMessage(
             [
                 'chat_id' => '442040222',
-                'text' => $data['hands'][random_int(0, count($data['legs']) - 1)]
+                'text' => $exercise[random_int(0, count($exercise) - 1)]
             ]
         );
 
